@@ -30,22 +30,31 @@
 
 
 <div ng-show="tasklistctrl.view === 'card'" layout-xs="column" layout="row" layout-align="start" layout-wrap>
-  <md-card flex-xs="100"
-          ng-repeat="task in tasklistctrl.tasks | orderBy:tasklistctrl.tasksOrder.type:tasklistctrl.tasksOrder.reverse | filter:tasklistctrl.filterFunc | filter:tasklistctrl.searchTask" 
-          ng-click="tasklistctrl.toggleSelection(task)" ng-class="{'selected-task': (tasklistctrl.selectedTask == task)}">
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">{{task.title}}</span>
-      </md-card-title-text>
-    </md-card-title>
-      <md-card-content>
-        <div layout="column">
+  <div flex-xs="100" flex="33"
+       ng-repeat="task in tasklistctrl.tasks | orderBy:tasklistctrl.tasksOrder.type:tasklistctrl.tasksOrder.reverse | filter:tasklistctrl.filterFunc | filter:tasklistctrl.searchTask">
+    <md-card ng-click="tasklistctrl.toggleSelection(task)" ng-class="{'selected-task': (tasklistctrl.selectedTask == task)}">
+      <md-card-title>
+        <md-card-title-text layout="row" layout-align="space-between start">
+          <span class="md-headline">{{task.title}}</span>
+          <md-checkbox ng-model="task.toDelete" ng-change="tasklistctrl.toggleMultiDelete(task)" aria-label="multiple delete" class="md-secondary"></md-checkbox>
+        </md-card-title-text>
+      </md-card-title>
+        <md-card-content layout="row" layout-align="none start">
           <p>{{task.description}}</p>
-        </div>
-      </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="tasklistctrl.editTaskDialog($event, task)" aria-label="edit task">Edit</md-button>
-      <md-button>Show info</md-button>
-    </md-card-actions>
-  </md-card>
+        </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-card-icon-actions>
+          <md-button class="md-icon-button" ng-click="tasklistctrl.togglePriority(task)">
+            <md-icon ng-class="{'important': (task.priority === 1)}" aria-label="important"> priority_high </md-icon>
+          </md-button>
+        
+          <md-button class="md-icon-button" ng-click="tasklistctrl.toggleDone(task)">
+            <md-icon ng-class="{'done': task.done}" style="font-size: 26px" aria-label="done"> done </md-icon>
+          </md-button>
+        </md-card-icon-actions>
+        <md-button ng-click="tasklistctrl.editTaskDialog($event, task)" aria-label="edit task">Edit</md-button>
+        <md-button>Show info</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
 </div>
