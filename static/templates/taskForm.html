@@ -1,0 +1,85 @@
+<form name="taskForm" ng-submit="taskformctrl.saveTask({form: taskForm, task: taskformctrl.task})" novalidate>
+  <md-dialog-content class="md-padding">        
+    <md-input-container class="md-block">
+      <label for="title">Title</label>
+      <input type="text" placeholder="Title" name="title" id="title" ng-model="taskformctrl.task.title" md-maxlength="25" ng-maxlength="25" required>
+      <div ng-messages="taskForm.title.$error" style="color:red" role="alert">
+        <div ng-message="required">Title is required</div>
+        <div ng-message="maxlength">25 characters maximum</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label for="description">Description</label>
+      <textarea placeholder="Description" name="description" id="description" ng-model="taskformctrl.task.description" ng-maxlength="150" md-maxlength="150" required></textarea>
+      <div ng-messages="taskForm.description.$error" style="color:red" role="alert">
+        <div ng-message="required">Description is required</div>
+        <div ng-message="maxlength">150 characters maximum</div>
+      </div>
+    </md-input-container>
+
+    <div layout="row" layout-align="space-around center">
+      <md-input-container class="md-input-has-value">
+        <label>Priority</label>
+        <md-radio-group name="priority" id="priority" ng-model="taskformctrl.task.priority">
+          <md-radio-button ng-value="1" aria-label="High">
+            <span class="md-body-1">High</span>
+          </md-radio-button>
+          <md-radio-button ng-value="0" aria-label="Low">
+            <span class="md-body-1">Low</span>
+          </md-radio-button>
+        </md-radio-group>
+      </md-input-container>
+
+      <md-input-container class="md-input-has-value">
+        <label for="done">Status</label>
+        <md-radio-group ng-model="taskformctrl.task.done" name="done">
+          <md-radio-button ng-value="false" aria-label="Undone">
+                <span class="md-body-1">Undone</span>
+          </md-radio-button>
+          <md-radio-button ng-value="true" aria-label="Done">
+                <span class="md-body-1">Done</span>
+          </md-radio-button>
+        </md-radio-group>
+      </md-input-container>
+    </div>
+
+    <md-input-container class="md-block" 
+      ng-class="{'input-error': (taskformctrl.task.tags.length === 0 || taskformctrl.task.tags.length > 3) && (!taskForm.tags.$pristine || taskForm.$submitted) }">
+      <label for="tags">Tags *</label>
+      <md-chips ng-model="taskformctrl.task.tags" name="tags" id="tags" md-max-chips="4">
+        <md-autocomplete md-items="tag in taskformctrl.tags | filter: taskformctrl.searchTagText" md-search-text="taskformctrl.searchTagText"
+                          md-item-text="tag" placeholder="Press enter to insert a tag" md-match-case-insensitive>
+          <span md-highlight-text="searchText">{{tag}}</span>
+        </md-autocomplete>
+      </md-chips>
+    </md-input-container>
+    <div class="error-message" style="margin: -18px 0 40px 0;">
+      <span ng-show="taskformctrl.task.tags.length === 0 && (!taskForm.tags.$pristine || taskForm.$submitted)">At least one tag is required</span>
+      <span ng-show="taskformctrl.task.tags.length > 3 && (!taskForm.tags.$pristine || taskForm.$submitted)">3 tags maximum allowed</span>
+    </div>
+
+    <md-input-container class="md-block">
+      <label>Date</label>
+      <md-datepicker name="date" ng-model="taskformctrl.task.date" md-min-date="taskformctrl.today" 
+                    md-placeholder="dd/mm/aaaa" required></md-datepicker>
+      <div ng-messages="taskForm.date.$error" style="color:red" role="alert">
+        <div ng-message="required">Date is required</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label for="work">Estimated work (hours)</label>
+      <input type="number" placeholder="Estimated work" name="work" id="work" ng-model="taskformctrl.task.work" required>
+      <div ng-messages="taskForm.work.$error" style="color:red" role="alert">
+        <div ng-message="required">Estimated work is required</div>
+        <div ng-message="number">Estimated work must be a number</div>
+      </div>
+    </md-input-container>
+  </md-dialog-content>
+  
+  <md-dialog-actions>
+    <md-button type="button" ng-click="taskformctrl.closeDialog()">Cancel</md-button>
+    <md-button type="submit" class="md-primary">Confrim</md-button>
+  </md-dialog-actions>
+</form>

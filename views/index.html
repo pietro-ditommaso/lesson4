@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+
+    <link rel="stylesheet" href="/libs/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/libs/angular.min.js"></script>
+    <script src="/libs/angular-animate.min.js"></script>
+    <script src="/libs/angular-aria.min.js"></script>
+    <script src="/libs/angular-material.min.js"></script>
+    <script src="/libs/angular-messages.min.js"></script>
+
+    <script src="/app.module.js"></script>
+    <script src="/app.config.js"></script>
+
+    <script src="/controllers/taskDialog.controller.js"></script>
+    <script src="/controllers/tasklist.controller.js"></script>
+    <script src="/controllers/todo.controller.js"></script>
+
+    <script src="/directives/tasklist.directive.js"></script>
+    <script src="/directives/taskForm.directive.js"></script>
+
+    <script src="/services/tagStorage.service.js"></script>
+    <script src="/services/taskStorage.service.js"></script>
+    <script src="/services/userConfig.service.js"></script>
+  </head>
+  <body ng-app="toDoApp" class="no-scroll">
+    <div ng-controller="TodoController as ctrl" class="no-scroll">
+      <div layout="column" class="no-scroll">
+        <md-toolbar class="toolbar md-whiteframe-3dp">
+          <div class="md-toolbar-tools">
+            <span>ToDo App</span>
+
+            <span flex></span>
+            
+            <md-button class="md-icon-button" aria-label="change view state" ng-click="ctrl.toggleView()">
+              <md-icon ng-show="ctrl.userConfig.view === 'list'">view_list</md-icon>
+              <md-icon ng-show="ctrl.userConfig.view === 'card'">view_module</md-icon>
+            </md-button>
+
+            <md-button ng-disabled="ctrl.tasksToDelete.length === 0" class="md-icon-button" aria-label="Delete"
+                       ng-click="ctrl.deleteTaskDialog($event, ctrl.tasksToDelete)">
+              <md-icon>delete</md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+
+        <md-content class="no-scroll">
+          <div layout="row" layout-align="center center" style="height: 4rem">
+            <span style="padding:0 10px 0 15px">Order by:</span>
+            <md-input-container style="width: 120px; font-size:16px;" flex="10" flex-xs="80">
+              <md-select ng-model="ctrl.tasksOrder.type" aria-label="order-by">
+                <md-option ng-repeat="order in ctrl.orders" ng-value="order">
+                  {{order | uppercase}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            
+            <div flex="30">
+              <md-button class="md-icon-button" ng-click="ctrl.tasksOrder.reverse = false">
+                <md-icon aria-label="increasing order" ng-class="{'selected-order': !ctrl.tasksOrder.reverse}">arrow_drop_down</md-icon>
+              </md-button>
+
+              <md-button class="md-icon-button" ng-click="ctrl.tasksOrder.reverse = true">
+                <md-icon aria-label="decreasing order" ng-class="{'selected-order': ctrl.tasksOrder.reverse}">arrow_drop_up</md-icon>
+              </md-button>
+            </div>
+
+            <md-input-container flex="30" flex-xs="100" style="top:13px">
+              <input type="search" ng-model="ctrl.searchTask" placeholder="Search task">
+              <md-icon aria-label="search">search</md-icon>
+            </md-input-container>
+          </div>
+
+          <md-tabs md-dynamic-height md-border-bottom md-swipe-content class="no-scroll">
+            <md-tab label="todo">
+              <md-content class="md-padding scroll tab-content">
+                <tasklist tasks="ctrl.tasks" tasks-order="ctrl.tasksOrder" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
+                          selected-task="ctrl.selectedTask" filter-func="ctrl.toDoTasks" view="ctrl.userConfig.view"></tasklist>
+              </md-content>
+            </md-tab>
+
+            <md-tab label="done">
+              <md-content class="md-padding scroll tab-content">
+                <tasklist tasks="ctrl.tasks" tasks-order="ctrl.tasksOrder" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
+                          selected-task="ctrl.selectedTask" filter-func="ctrl.doneTasks" view="ctrl.userConfig.view"></tasklist>
+              </md-content>
+            </md-tab>
+
+            <md-tab label="all">
+              <md-content class="md-padding scroll tab-content">
+                <tasklist tasks="ctrl.tasks" tasks-order="ctrl.tasksOrder" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
+                          selected-task="ctrl.selectedTask" filter-func="ctrl.allTasks" view="ctrl.userConfig.view"></tasklist>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+
+          <md-button class="md-fab add-task" ng-click="ctrl.addTaskDialog($event)">
+            <md-icon>add</md-icon>
+          </md-button>
+        </md-content>
+      </div>
+    </div>
+  </body>
+</html>

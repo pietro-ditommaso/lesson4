@@ -1,0 +1,117 @@
+md-tabs.md-dynamic-height md-tabs-content-wrapper,
+md-tab-content.md-no-scroll,
+md-tab-content.md-no-scroll>div,
+.no-scroll {
+    height: 100%;
+    overflow-y: hidden !important;
+}
+
+.scroll {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tab-content {
+    height: calc(100% - 50px);
+}
+
+.selected-task {
+    background-color: #dedede;
+}
+
+.selected-order {
+    color: lightseagreen;
+}
+
+.toolbar {
+    background-color: lightseagreen !important;
+    color: white !important;
+}
+
+.add-task {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background-color: #0e9088 !important;
+}
+
+.edit-button {
+    right: 13px;
+}
+.edit-button .edit-icon {
+    font-size: 17px;
+}
+.priority-icon {
+    position: absolute;
+    right: 105px;
+}
+
+.done-icon {
+    position: absolute;
+    right: 75px;
+}
+
+.checkbox {
+    position: absolute;
+    right: 50px;
+}
+
+.important {
+    color: red;
+}
+
+.done {
+    color: limegreen;
+}
+
+.error-message {
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    color: rgb(221, 44, 0);
+    opacity: 1;
+    margin-top: 0;
+    padding-top: 5px;
+}
+
+.input-error label {
+    color: rgb(221, 44, 0);
+}
+
+
+input::-moz-outer-spin-button,
+input::-moz-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input::-ms-outer-spin-button,
+input::-ms-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input::-o-outer-spin-button,
+input::-o-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
