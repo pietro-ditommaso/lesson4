@@ -32,9 +32,11 @@
       
       var jsonTasks = angular.fromJson(tasks);
 
-      jsonTasks.forEach(function(task) {
-        task.date = new Date(task.date);
-      });
+      if(jsonTasks){
+        jsonTasks.forEach(function(task) {
+          task.date = new Date(task.date);
+        });
+      };
 
       return jsonTasks;
     };
