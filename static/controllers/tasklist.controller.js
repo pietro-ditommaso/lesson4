@@ -22,6 +22,7 @@
 	function TasklistController($mdDialog, taskStorage) {
 		var vm = this;
 		vm.editTaskDialog = editTaskDialog;
+		vm.showTaskDialog = showTaskDialog;
 		vm.toggleDone = toggleDone;
 		vm.toggleMultiDelete = toggleMultiDelete;
 		vm.togglePriority = togglePriority;
@@ -69,6 +70,24 @@
 			}).then(function(newTask) {
 				editTask(newTask, task);
 			});
+		};
+
+		/**
+		 * @description: this function provides dialog to show task information
+		 * @param {Object=} ev - The event fired on browser view
+		 * @param {Object=} task - Task to show
+		 * @returns {undefined} Nothing returned
+		 */
+		function showTaskDialog(ev, task) {
+			$mdDialog.show({
+				templateUrl: '/templates/showTaskInfo.html',
+				targetEvent: ev,
+				locals: {
+					task: task
+				},
+				controller: 'TaskDialogController',
+				controllerAs: 'taskdialogctrl'
+			}).then(function(){});
 		};
 
 		/**
