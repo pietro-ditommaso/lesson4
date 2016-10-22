@@ -1,3 +1,12 @@
+md-card {
+    outline: none !important;
+}
+
+md-chips.custom-theme md-chip {
+    background: lightseagreen;
+    color: white;
+}
+
 md-tabs.md-dynamic-height md-tabs-content-wrapper,
 md-tab-content.md-no-scroll,
 md-tab-content.md-no-scroll>div,
@@ -81,37 +90,33 @@ md-tab-content.md-no-scroll>div,
 
 input::-moz-outer-spin-button,
 input::-moz-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 input::-ms-outer-spin-button,
 input::-ms-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 input::-o-outer-spin-button,
 input::-o-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
