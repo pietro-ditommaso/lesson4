@@ -1,7 +1,23 @@
 <md-dialog aria-label="Show Task" flex="30">
   <div layout="column" layout-align="space-between">
     <md-dialog-content class="md-padding">
-      <h2 class="md-padding md-headline">{{taskdialogctrl.task.title}}</h2>
+      <div layout="row" layout-align="space-between center">
+        <h2 class="md-padding md-headline">{{taskdialogctrl.task.title}}</h2>
+        
+        <div layout="row">
+          <md-icon ng-class="{'important': (taskdialogctrl.task.priority === 1)}" aria-label="important"> priority_high </md-icon>
+          <md-icon ng-class="{'done': taskdialogctrl.task.done}" style="font-size: 25px" aria-label="done"> done </md-icon>
+        </div>
+      </div>
+
+      <p class="md-padding md-subhead">{{taskdialogctrl.task.description}}</p>
+
+      <p class="md-padding">{{taskdialogctrl.task.date | date: 'dd/MM/yyyy'}}</p>
+
+      <p class="md-padding">Estimated working hours: {{taskdialogctrl.task.work}}</p>
+
+      <md-chips layout="row" class="custom-theme" ng-model="taskdialogctrl.task.tags" md-removable="false" readonly="true"></md-chips>
+
     </md-dialog-content>
 
     <md-dialog-actions>

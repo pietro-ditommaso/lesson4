@@ -7,6 +7,10 @@ md-chips.custom-theme md-chip {
     color: white;
 }
 
+md-chips.custom-theme md-chips-wrap {
+    box-shadow: none; 
+}
+
 md-tabs.md-dynamic-height md-tabs-content-wrapper,
 md-tab-content.md-no-scroll,
 md-tab-content.md-no-scroll>div,
