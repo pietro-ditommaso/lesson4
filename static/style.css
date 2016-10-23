@@ -5,6 +5,7 @@ md-card {
 md-chips.custom-theme md-chip {
     background: lightseagreen;
     color: white;
+    font-size: 14px;
 }
 
 md-chips.custom-theme md-chips-wrap {
