@@ -2,7 +2,7 @@
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @file: todo.controller.js
  * @description: This file contains the controller responsable for handling task list definition,
- * 							 new task addition, task deletion
+ * 				 new task addition, task deletion
  */
 
 (function(angular) {
@@ -80,7 +80,7 @@
 		 */
 		function showTaskDialog(ev, task) {
 			$mdDialog.show({
-				templateUrl: '/templates/showTaskInfo.html',
+				templateUrl: '/app/tasks/show-task-info.template.html',
 				targetEvent: ev,
 				locals: {
 					task: task

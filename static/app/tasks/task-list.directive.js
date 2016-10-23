@@ -9,7 +9,7 @@
 
   angular.module('toDoApp')
 		.directive('tasklist', tasklistDirective);
-	
+
 	/**
 	 * @description: tasklist directive function
 	 * @returns: {Object=} Object to define tasklist directive
@@ -29,8 +29,8 @@
 			bindToController: true,
 			controller: 'TasklistController',
 			controllerAs: 'tasklistctrl',
-			templateUrl: '/templates/tasklist.html'
+			templateUrl: '/app/tasks/task-list.directive.html'
 		};
 	};
-	
+
 })(window.angular)

@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <title>ToDo App</title>
 
-    <link rel="stylesheet" href="/libs/angular-material.min.css">
+    <link rel="stylesheet" href="/assets/libs/angular-material.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
-    <script src="/libs/angular.min.js"></script>
-    <script src="/libs/angular-animate.min.js"></script>
-    <script src="/libs/angular-aria.min.js"></script>
-    <script src="/libs/angular-material.min.js"></script>
-    <script src="/libs/angular-messages.min.js"></script>
+    <script src="/assets/libs/angular.min.js"></script>
+    <script src="/assets/libs/angular-animate.min.js"></script>
+    <script src="/assets/libs/angular-aria.min.js"></script>
+    <script src="/assets/libs/angular-material.min.js"></script>
+    <script src="/assets/libs/angular-messages.min.js"></script>
 
-    <script src="/app.module.js"></script>
-    <script src="/app.config.js"></script>
+    <script src="/app/app.module.js"></script>
+    <script src="/app/app.config.js"></script>
 
-    <script src="/controllers/taskDialog.controller.js"></script>
-    <script src="/controllers/tasklist.controller.js"></script>
-    <script src="/controllers/todo.controller.js"></script>
+    <script src="/app/tasks/task-dialog.controller.js"></script>
+    <script src="/app/tasks/task-list.controller.js"></script>
+    <script src="/app/components/todo.controller.js"></script>
 
-    <script src="/directives/tasklist.directive.js"></script>
-    <script src="/directives/taskForm.directive.js"></script>
+    <script src="/app/tasks/task-list.directive.js"></script>
+    <script src="/app/tasks/task-form.directive.js"></script>
 
-    <script src="/services/taskStorage.service.js"></script>
-    <script src="/services/userConfig.service.js"></script>
+    <script src="/app/services/task-storage.service.js"></script>
+    <script src="/app/services/user-config.service.js"></script>
   </head>
   <body ng-app="toDoApp" class="no-scroll">
     <div ng-controller="TodoController as ctrl" class="no-scroll">

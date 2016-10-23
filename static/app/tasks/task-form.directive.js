@@ -25,9 +25,9 @@
         closeDialog: '&'
       },
       bindToController: true,
-      templateUrl: '/templates/taskForm.html',
+      templateUrl: '/app/tasks/task-form.directive.html',
       controller: function(){},
-      controllerAs: 'taskformctrl'       
+      controllerAs: 'taskformctrl'
     }
   }
 })(window.angular)
