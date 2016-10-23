@@ -55,25 +55,9 @@ md-tab-content.md-no-scroll>div,
     font-size: 17px;
 }
 
-@media (max-width: 600px) {
-  .task-title {
-    max-width: 6em;
-  }
-}
-
-.priority-icon {
-    position: absolute;
-    right: 105px;
-}
-
 .done-icon {
-    position: absolute;
-    right: 75px;
-}
-
-.checkbox {
-    position: absolute;
-    right: 50px;
+    position: relative;
+    right: 10px;
 }
 
 .important {
