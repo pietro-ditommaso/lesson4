@@ -47,9 +47,9 @@
     <md-input-container class="md-block" 
       ng-class="{'input-error': (taskformctrl.task.tags.length === 0 || taskformctrl.task.tags.length > 3) && (!taskForm.tags.$pristine || taskForm.$submitted) }">
       <label for="tags">Tags *</label>
-      <md-chips ng-model="taskformctrl.task.tags" name="tags" id="tags" md-max-chips="4">
+      <md-chips ng-model="taskformctrl.task.tags" name="tags" id="tags" md-max-chips="4" md-separator-keys="[188]" md-add-on-blur>
         <md-autocomplete md-items="tag in taskformctrl.tags | filter: taskformctrl.searchTagText" md-search-text="taskformctrl.searchTagText"
-                          md-item-text="tag" placeholder="Press enter to insert a tag" md-match-case-insensitive>
+                          md-item-text="tag" placeholder="Comma key to insert a tag" md-match-case-insensitive>
           <span md-highlight-text="searchText">{{tag}}</span>
         </md-autocomplete>
       </md-chips>

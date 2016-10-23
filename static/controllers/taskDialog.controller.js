@@ -34,7 +34,7 @@
      * @returns {undefined} Nothing returned
      */
     function saveTask(form, task) {
-      if(form.$valid) {
+      if(form.$valid && task.tags.length > 0) {
         $mdDialog.hide(task);
       }
     };
