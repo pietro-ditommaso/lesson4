@@ -54,6 +54,13 @@ md-tab-content.md-no-scroll>div,
 .edit-button .edit-icon {
     font-size: 17px;
 }
+
+@media (max-width: 600px) {
+  .task-title {
+    max-width: 6em;
+  }
+}
+
 .priority-icon {
     position: absolute;
     right: 105px;

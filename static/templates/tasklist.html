@@ -4,7 +4,7 @@
                 ng-click="task.showInfo = !task.showInfo; tasklistctrl.toggleSelection(task)" ng-class="{'selected-task': (tasklistctrl.selectedTask == task)}">
     <div class="md-list-item-text">
       <div layout="row" layout-align="space-between center">
-        <h3>{{task.title}}</h3>
+        <span layout-wrap class="task-title">{{task.title}}</span>
         
         <md-button class="md-icon-button edit-button" ng-click="tasklistctrl.editTaskDialog($event, task)">
           <md-icon class="edit-icon" aria-label="edit task"> mode_edit </md-icon>
