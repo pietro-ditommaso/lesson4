@@ -10,9 +10,9 @@
 
   angular.module('toDoApp')
     .controller('TodoController', TodoController);
-	
+
   TodoController.$inject = ['$mdDialog', 'taskStorage', 'userConfig'];
-	
+
 	/**
 	 * @description: TodoController function
 	 * @param {Object=} $mdDialog - Angular Material service to handle dialogs.
@@ -23,22 +23,23 @@
 		var vm = this;
 		vm.addTaskDialog = addTaskDialog;
 		vm.allTasks = '';
-    vm.deleteTaskDialog = deleteTaskDialog;
+    	vm.deleteTaskDialog = deleteTaskDialog;
 		vm.doneTasks = {done: true};
 		vm.orders = [ 'title', 'date', 'work', 'priority' ];
 		vm.selectedTask = null;
+		vm.setTasksOrder = setTasksOrder;
 		vm.tasks = taskStorage.get() || [];
-		vm.tasksOrder = {
-			type: 'title',
-			reverse: false
-		}
 		vm.tasksToDelete = [];
-    vm.toDoTasks = {done: false};
+    	vm.toDoTasks = {done: false};
 		vm.toggleView = toggleView;
 		vm.userConfig = userConfig.get() || {
+			tasksOrder: {
+				type: 'title',
+				reverse: false
+			},
 			view: 'list'
 		};
-		
+
 		////////////
 
 		/**
@@ -125,11 +126,24 @@
 														.ok('Yes')
 														.cancel('No')
 														.targetEvent(ev)
-				
+
 				$mdDialog.show(deleteDialog).then(function() {
 					deleteTasks(tasks);
 				});
 			};
+		};
+
+		/**
+		 * @description: Function to set tasks order type and save setting in user's configuration
+		 * @param: {Boolean=} reverse - A boolean to specify if the order is ascendant or descendant
+		 * @returns: {undefined} Nothing returned
+		 */
+		function setTasksOrder(reverse) {
+			if(reverse != null) {
+				vm.userConfig.tasksOrder.reverse = reverse;
+			};
+
+			userConfig.set(vm.userConfig);
 		};
 
 		/**
@@ -141,6 +155,7 @@
 
 			userConfig.set(vm.userConfig);
 		};
+
 	};
 
 })(window.angular)
