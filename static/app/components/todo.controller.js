@@ -33,8 +33,10 @@
     	vm.toDoTasks = {done: false};
 		vm.toggleView = toggleView;
 		vm.userConfig = userConfig.get() || {
-			tasksOrderType: 'title',
-			tasksOrderReverse: false,
+			tasksOrder: {
+				type: 'title',
+				reverse: false
+			},
 			view: 'list'
 		};
 

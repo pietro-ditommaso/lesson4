@@ -61,12 +61,12 @@
             </md-input-container>
             
             <div flex="30">
-              <md-button class="md-icon-button" ng-click="ctrl.userConfig.tasksOrderReverse = false">
-                <md-icon aria-label="increasing order" ng-class="{'selected-order': !ctrl.userConfig.tasksOrderReverse}">arrow_drop_down</md-icon>
+              <md-button class="md-icon-button" ng-click="ctrl.userConfig.tasksOrder.reverse = false">
+                <md-icon aria-label="increasing order" ng-class="{'selected-order': !ctrl.userConfig.tasksOrder.reverse}">arrow_drop_down</md-icon>
               </md-button>
 
-              <md-button class="md-icon-button" ng-click="ctrl.tasksOrderReverse = true">
-                <md-icon aria-label="decreasing order" ng-class="{'selected-order': ctrl.userConfig.tasksOrderReverse}">arrow_drop_up</md-icon>
+              <md-button class="md-icon-button" ng-click="ctrl.tasksOrder.reverse = true">
+                <md-icon aria-label="decreasing order" ng-class="{'selected-order': ctrl.userConfig.tasksOrder.reverse}">arrow_drop_up</md-icon>
               </md-button>
             </div>
 
@@ -79,7 +79,7 @@
           <md-tabs md-dynamic-height md-border-bottom md-swipe-content class="no-scroll">
             <md-tab label="todo">
               <md-content class="md-padding scroll tab-content">
-                <tasklist tasks="ctrl.tasks" tasks-order="ctrl.userConfig.tasksOrderType" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
+                <tasklist tasks="ctrl.tasks" tasks-order="ctrl.userConfig.tasksOrder.type" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
                           selected-task="ctrl.selectedTask" filter-func="ctrl.toDoTasks" view="ctrl.userConfig.view"></tasklist>
               </md-content>
             </md-tab>
