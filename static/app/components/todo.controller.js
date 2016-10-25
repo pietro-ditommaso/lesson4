@@ -28,7 +28,7 @@
 		vm.orders = [ 'title', 'date', 'work', 'priority' ];
 		vm.selectedTask = null;
 		vm.tasks = taskStorage.get() || [];
-		vm.tasksOrder = tasksOrder;
+		vm.setTasksOrder = setTasksOrder;
 		vm.tasksToDelete = [];
     	vm.toDoTasks = {done: false};
 		vm.toggleView = toggleView;
@@ -134,6 +134,19 @@
 		};
 
 		/**
+		 * @description: Function to set tasks order type and save setting in user's configuration
+		 * @param: {Boolean=} reverse - A boolean to specify if the order is ascendant or descendant
+		 * @returns: {undefined} Nothing returned
+		 */
+		function setTasksOrder(reverse) {
+			if(reverse != null) {
+				vm.userConfig.tasksOrder.reverse = reverse;
+			};
+
+			userConfig.set(vm.userConfig);
+		};
+
+		/**
 		 * @description: This function toggles view state and saves user's configurations in browser local storage
 		 * @returns {undefined} Nothing returned
 		 */
@@ -143,13 +156,6 @@
 			userConfig.set(vm.userConfig);
 		};
 
-		/**
-		 * @description: Function to set tasks order type and save setting in user's configuration
-		 * @returns: {undefined} Nothing returned
-		 */
-		function tasksOrder() {
-			userConfig.set(vm.userConfig);
-		};
 	};
 
 })(window.angular)
