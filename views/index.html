@@ -53,7 +53,7 @@
           <div layout="row" layout-align="center center" style="height: 4rem">
             <span style="padding:0 10px 0 15px">Order by:</span>
             <md-input-container style="width: 120px; font-size:16px;" flex="10" flex-xs="80">
-              <md-select ng-model="ctrl.userConfig.tasksOrderType" aria-label="order-by">
+              <md-select ng-model="ctrl.userConfig.tasksOrder.type" aria-label="order-by">
                 <md-option ng-repeat="order in ctrl.orders" ng-value="order">
                   {{order | uppercase}}
                 </md-option>
@@ -65,7 +65,7 @@
                 <md-icon aria-label="increasing order" ng-class="{'selected-order': !ctrl.userConfig.tasksOrder.reverse}">arrow_drop_down</md-icon>
               </md-button>
 
-              <md-button class="md-icon-button" ng-click="ctrl.tasksOrder.reverse = true">
+              <md-button class="md-icon-button" ng-click="ctrl.userConfig.tasksOrder.reverse = true">
                 <md-icon aria-label="decreasing order" ng-class="{'selected-order': ctrl.userConfig.tasksOrder.reverse}">arrow_drop_up</md-icon>
               </md-button>
             </div>
