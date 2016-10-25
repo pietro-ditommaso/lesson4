@@ -1,8 +1,8 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @file: todo.controller.js
- * @description: This file contains the controller responsable for handling task list definition,
- * 							 new task addition, task deletion
+ * @description: This file contains the controller responsible for tasklist definition,
+ * 				 new task addition, task deletion and setting user's configurations
  */
 
 (function(angular) {
@@ -10,13 +10,14 @@
 
   angular.module('toDoApp')
     .controller('TodoController', TodoController);
-	
+
   TodoController.$inject = ['$mdDialog', 'taskStorage', 'userConfig'];
-	
+
 	/**
 	 * @description: TodoController function
 	 * @param {Object=} $mdDialog - Angular Material service to handle dialogs.
-	 * @param {Object=} taskStorage - Custom service to handle browser local storage.
+	 * @param {Object=} taskStorage - Custom service to handle tasks in browser local storage.
+	 * @param {Object=} userConfig - Custom service to handle user's configurations in browser local storage.
 	 * @returns {undefined} Nothing returned
 	 */
   function TodoController($mdDialog, taskStorage, userConfig) {
@@ -27,25 +28,24 @@
 		vm.doneTasks = {done: true};
 		vm.orders = [ 'title', 'date', 'work', 'priority' ];
 		vm.selectedTask = null;
+		vm.setTasksOrder = setTasksOrder;
 		vm.tasks = taskStorage.get() || [];
-		vm.tasksOrder = {
-			type: 'title',
-			reverse: false
-		}
 		vm.tasksToDelete = [];
     vm.toDoTasks = {done: false};
 		vm.toggleView = toggleView;
 		vm.userConfig = userConfig.get() || {
+			tasksOrder: {
+				type: 'title',
+				reverse: false
+			},
 			view: 'list'
 		};
-		
+
 		////////////
 
 		/**
 		 * @description: This function adds a new task in tasklist and updates browser local storage
-		 * @param {string=} [title=UnknownTask] - The title of the task
- 		 * @param {string=} [date=Date.now()] - The date where the task is added
-		 * @param {number=} [priority=0] - The priority of the task
+		 * @param {Object=} task - The task to add
 		 * @returns {undefined} Nothing returned
 		 */
     function addTask(task) {
@@ -72,8 +72,8 @@
 				template: '<md-dialog aria-label="Add Task" flex="30">' +
 										'<div layout="column" layout-align="space-between">' +
 											'<h2 class="md-padding md-headline">Add Task</h2>' +
-											'<task-form task="taskdialogctrl.task" tags="taskdialogctrl.tags" today="taskdialogctrl.today"' +
-             										'save-task="taskdialogctrl.saveTask(form, task)" close-dialog="taskdialogctrl.closeDialog()" class="md-padding"></task-form>' +
+											'<todo-task-form task="taskdialogctrl.task" tags="taskdialogctrl.tags" today="taskdialogctrl.today"' +
+             										'save-task="taskdialogctrl.saveTask(form, task)" close-dialog="taskdialogctrl.closeDialog()" class="md-padding"></todo-task-form>' +
 										'</div>' + 
 									'</md-dialog>',
 				targetEvent: ev,
@@ -109,9 +109,9 @@
 		};
 
 		/**
-		 * @description: This function shows dialog to delete a task from tasklist
+		 * @description: This function shows dialog to delete one or more tasks from tasklist
 		 * @param {Object=} ev - The event fired on browser view 
-		 * @param {Object=} task - The task to remove
+		 * @param {Object=} tasks - The tasks to remove
 		 * @returns {undefined} Nothing returned
 		 */
 		function deleteTaskDialog(ev, tasks) {
@@ -125,11 +125,24 @@
 														.ok('Yes')
 														.cancel('No')
 														.targetEvent(ev)
-				
+
 				$mdDialog.show(deleteDialog).then(function() {
 					deleteTasks(tasks);
 				});
 			};
+		};
+
+		/**
+		 * @description: Function to set tasks order and save in user's configurations in browser local storage
+		 * @param: {Boolean=} reverse - A boolean to specify if the order is ascendant or descendant
+		 * @returns: {undefined} Nothing returned
+		 */
+		function setTasksOrder(reverse) {
+			if(reverse != null) {
+				vm.userConfig.tasksOrder.reverse = reverse;
+			};
+
+			userConfig.set(vm.userConfig);
 		};
 
 		/**
@@ -141,6 +154,7 @@
 
 			userConfig.set(vm.userConfig);
 		};
+
 	};
 
 })(window.angular)

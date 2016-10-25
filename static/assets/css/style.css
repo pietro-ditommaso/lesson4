@@ -1,9 +1,23 @@
+md-card {
+    outline: none !important;
+}
+
+md-chips.custom-theme md-chip {
+    background: lightseagreen;
+    color: white;
+    font-size: 14px;
+}
+
+md-chips.custom-theme md-chips-wrap {
+    box-shadow: none; 
+}
+
 md-tabs.md-dynamic-height md-tabs-content-wrapper,
 md-tab-content.md-no-scroll,
 md-tab-content.md-no-scroll>div,
 .no-scroll {
     height: 100%;
-    overflow-y: hidden !important;
+    /*overflow-y: hidden !important;*/
 }
 
 .scroll {
@@ -41,19 +55,10 @@ md-tab-content.md-no-scroll>div,
 .edit-button .edit-icon {
     font-size: 17px;
 }
-.priority-icon {
-    position: absolute;
-    right: 105px;
-}
 
 .done-icon {
-    position: absolute;
-    right: 75px;
-}
-
-.checkbox {
-    position: absolute;
-    right: 50px;
+    position: relative;
+    right: 10px;
 }
 
 .important {
@@ -81,37 +86,33 @@ md-tab-content.md-no-scroll>div,
 
 input::-moz-outer-spin-button,
 input::-moz-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 input::-ms-outer-spin-button,
 input::-ms-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 input::-o-outer-spin-button,
 input::-o-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }

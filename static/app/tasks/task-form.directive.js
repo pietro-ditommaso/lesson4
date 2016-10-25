@@ -1,21 +1,21 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
- * @filename: taskForm.directive.js
- * @description: In this file is defined taskForm directive to wrap the form to add or edit a task
+ * @filename: task-form.directive.js
+ * @description: taskForm directive to wrap the form used to add or edit a task
  */
 
 (function(angular) {
   'use strict';
 
   angular.module('toDoApp')
-    .directive('taskForm', taskFormDirective);
+    .directive('todoTaskForm', taskFormDirective);
 
   /**
 	 * @description: taskForm directive function
 	 * @returns: {Object=} Object to define taskForm directive
 	 */
   function taskFormDirective() {
-    return {
+    var directive = {
       restrict: 'E',
       scope: {
         task: '=',
@@ -25,9 +25,11 @@
         closeDialog: '&'
       },
       bindToController: true,
-      templateUrl: '/templates/taskForm.html',
+      templateUrl: '/app/tasks/task-form.directive.html',
       controller: function(){},
-      controllerAs: 'taskformctrl'       
-    }
+      controllerAs: 'taskformctrl'
+    };
+
+    return directive;
   }
 })(window.angular)

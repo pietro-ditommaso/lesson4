@@ -1,21 +1,22 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @filename: tasklist.directive.js
- * @description: In this file is defined tasklist directive to wrap list of tasks logic and view
+ * @description: Tasklist directive to wrap list of tasks logic and view
  */
 
 (function(angular) {
   'use strict';
 
   angular.module('toDoApp')
-		.directive('tasklist', tasklistDirective);
-	
+		.directive('todoTasklist', tasklistDirective);
+
 	/**
 	 * @description: tasklist directive function
 	 * @returns: {Object=} Object to define tasklist directive
 	 */
 	function tasklistDirective() {
-		return {
+		var directive = {
+			restrict: 'E',
       scope: {
 				tasks: '=',
 				tasksOrder: '=',
@@ -25,12 +26,13 @@
 				filterFunc: '=',
 				view: '='
 			},
-			restrict: 'E',
 			bindToController: true,
 			controller: 'TasklistController',
 			controllerAs: 'tasklistctrl',
-			templateUrl: '/templates/tasklist.html'
+			templateUrl: '/app/tasks/tasklist.directive.html'
 		};
+
+		return directive;
 	};
-	
+
 })(window.angular)
