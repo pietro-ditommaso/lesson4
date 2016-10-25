@@ -1,6 +1,6 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
- * @filename: taskStorage.service.js
+ * @filename: task-storage.service.js
  * @description: Here is defined the service which handles saving and retrieving of tasklist in browser local storage
  */
 
@@ -25,7 +25,7 @@
 
     /**
      * @description: this function retrieves tasklist from browser local storage 
-     * @returns {Object[]} Array of objects, where each element contains all task information 
+     * @returns {Object[]} Array of objects, where each element contains every task information 
      */     
     function get() {
       var tasks = $window.localStorage.getItem('tasklist');
@@ -43,7 +43,7 @@
 
     /**
      * @description: this function saves tasklist into browser local storage
-     * @param {Object[]} tasks - Array of objects, where each element contains all task information
+     * @param {Object[]} tasks - Array of objects, where each element contains every task information
      * @returns {undefined} Nothing returned
      */
     function set(tasks) {

@@ -8,14 +8,15 @@
   'use strict';
 
   angular.module('toDoApp')
-		.directive('tasklist', tasklistDirective);
+		.directive('todoTasklist', tasklistDirective);
 
 	/**
 	 * @description: tasklist directive function
 	 * @returns: {Object=} Object to define tasklist directive
 	 */
 	function tasklistDirective() {
-		return {
+		var directive = {
+			restrict: 'E',
       scope: {
 				tasks: '=',
 				tasksOrder: '=',
@@ -25,12 +26,13 @@
 				filterFunc: '=',
 				view: '='
 			},
-			restrict: 'E',
 			bindToController: true,
 			controller: 'TasklistController',
 			controllerAs: 'tasklistctrl',
-			templateUrl: '/app/tasks/task-list.directive.html'
+			templateUrl: '/app/tasks/tasklist.directive.html'
 		};
+
+		return directive;
 	};
 
 })(window.angular)

@@ -1,7 +1,7 @@
 /**
  * @author: Pietro Di Tommaso
  * @file: server.js
- * @description: This file handles express server boot
+ * @description: In this file is defined the Express server
  */
 
 const express = require('express')

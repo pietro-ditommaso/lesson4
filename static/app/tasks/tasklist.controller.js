@@ -1,8 +1,7 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
- * @file: todo.controller.js
- * @description: This file contains the controller responsable for handling task list definition,
- * 				 new task addition, task deletion
+ * @file: tasklist.controller.js
+ * @description: This file contains the controller of tasklist directive
  */
 
 (function(angular) {
@@ -14,7 +13,7 @@
   TasklistController.$inject = ['$mdDialog', 'taskStorage'];
 	
 	/**
-	 * @description: tasklist directive controller function which handles task editing and checks task status
+	 * @description: controller function which handles task editing and deletion, shows task information and checks task status
 	 * @param {Object=} $mdDialog - Angular Material service to handle dialogs.
 	 * @param {Object=} taskStorage - Custom service to handle browser local storage.
 	 * @returns: {undefined} Nothing returned
@@ -32,8 +31,8 @@
 
 		/**
 		 * @description: this function edits an existing task and updates browser local storage
-		 * @param {Object=} task - Task to edit
-		 * @param {string=} newTitle - New task title to update
+		 * @param {Object=} newTask - Task with new information
+		 * @param {Object=} prevTask - Task to edit
 		 * @returns {undefined} Nothing returned
 		 */
 		function editTask(newTask, prevTask) {
@@ -57,8 +56,8 @@
 				template: '<md-dialog aria-label="Edit Task" flex="30">' +
 										'<div layout="column" layout-align="space-between">' +
 											'<h2 class="md-padding md-headline">Edit Task</h2>' +
-											'<task-form task="taskdialogctrl.task" tags="taskdialogctrl.tags" today="taskdialogctrl.today"' +
-																'save-task="taskdialogctrl.saveTask(form, task)" close-dialog="taskdialogctrl.closeDialog()" class="md-padding"></task-form>' +
+											'<todo-task-form task="taskdialogctrl.task" tags="taskdialogctrl.tags" today="taskdialogctrl.today"' +
+																'save-task="taskdialogctrl.saveTask(form, task)" close-dialog="taskdialogctrl.closeDialog()" class="md-padding"></todo-task-form>' +
 										'</div>' + 
 									'</md-dialog>',
 				targetEvent: ev,
