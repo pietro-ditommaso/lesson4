@@ -1,7 +1,7 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @filename: tasklist.directive.js
- * @description: In this file is defined tasklist directive to wrap list of tasks logic and view
+ * @description: Tasklist directive to wrap list of tasks logic and view
  */
 
 (function(angular) {

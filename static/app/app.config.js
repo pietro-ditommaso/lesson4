@@ -1,7 +1,7 @@
 /**
  * @author: Pietro Di Tommaso, Francesco Pira
  * @file: app.config.js
- * @description: This file contains 'toDoApp' module configurations
+ * @description: 'toDoApp' module configurations
  */
 
 (function(angular) {

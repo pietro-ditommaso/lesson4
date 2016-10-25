@@ -8,5 +8,5 @@
 	'use strict';
 
 	angular.module('toDoApp', ['ngMaterial', 'ngMessages']);
-  
+
 })(window.angular)

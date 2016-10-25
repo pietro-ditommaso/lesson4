@@ -1,7 +1,7 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @filename: task-form.directive.js
- * @description: In this file is defined taskForm directive to wrap the form used to add or edit a task
+ * @description: taskForm directive to wrap the form used to add or edit a task
  */
 
 (function(angular) {

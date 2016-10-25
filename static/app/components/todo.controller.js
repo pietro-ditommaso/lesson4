@@ -2,7 +2,7 @@
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @file: todo.controller.js
  * @description: This file contains the controller responsible for tasklist definition,
- * 							 new task addition, task deletion and setting user's configurations
+ * 				 new task addition, task deletion and setting user's configurations
  */
 
 (function(angular) {

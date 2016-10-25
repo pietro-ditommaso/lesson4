@@ -1,7 +1,7 @@
 /**
  * @authors: Pietro Di Tommaso, Francesco Pira
  * @filename: task-dialog.controller.js
- * @description: Here it's defined Controller of the dialog for adding a new task or for editing an existing one
+ * @description: Controller of the dialog for adding a new task or for editing an existing one
  */
 
 (function(angular) {
@@ -13,7 +13,7 @@
   TaskDialogController.$inject = ['$mdDialog', 'task'];
 
   /**
-   * @description: Controller function responsible for resolving or rejecting the dialog for adding or editing a task
+   * @description: Resolves or rejects   the dialog for adding or editing a task
    * @param {Object=} $mdDialog - Angular Material native service
    * @param {Object=} task - Task to add or edit
    * @returns {undefined} Nothing returned
@@ -27,9 +27,9 @@
     vm.today = new Date();
 
     ////////////
-    
+
     /**
-     * @description: function responsible for resolving dialog
+     * @description: Resolves the dialog for task saving
      * @param {Object=} form - This is the form filled with information of the task to add or edit
      * @param {Object=} task - The task
      * @returns {undefined} Nothing returned
@@ -41,7 +41,7 @@
     };
 
     /**
-     * @description: function responsible for rejecting dialog
+     * @description: Rejects the dialog for task saving
      * @returns {undefined} Nothing returned
      */
     function closeDialog() {

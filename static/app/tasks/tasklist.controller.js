@@ -11,9 +11,9 @@
     .controller('TasklistController', TasklistController);
 
   TasklistController.$inject = ['$mdDialog', 'taskStorage'];
-	
+
 	/**
-	 * @description: controller function which handles task editing and deletion, shows task information and checks task status
+	 * @description: Handles task editing and deletion, shows task information and checks task status
 	 * @param {Object=} $mdDialog - Angular Material service to handle dialogs.
 	 * @param {Object=} taskStorage - Custom service to handle browser local storage.
 	 * @returns: {undefined} Nothing returned
@@ -26,11 +26,11 @@
 		vm.toggleMultiDelete = toggleMultiDelete;
 		vm.togglePriority = togglePriority;
 		vm.toggleSelection = toggleSelection;
-		
+
 		////////////
 
 		/**
-		 * @description: this function edits an existing task and updates browser local storage
+		 * @description: Edits an existing task and updates browser local storage
 		 * @param {Object=} newTask - Task with new information
 		 * @param {Object=} prevTask - Task to edit
 		 * @returns {undefined} Nothing returned
@@ -46,7 +46,7 @@
 		};
 
 		/**
-		 * @description: this function provides dialog to edit a task
+		 * @description: Provides dialog to edit a task
 		 * @param {Object=} ev - The event fired on browser view
 		 * @param {Object=} task - Task to edit
 		 * @returns {undefined} Nothing returned
@@ -72,7 +72,7 @@
 		};
 
 		/**
-		 * @description: this function provides dialog to show task information
+		 * @description: Provides dialog to show task information
 		 * @param {Object=} ev - The event fired on browser view
 		 * @param {Object=} task - Task to show
 		 * @returns {undefined} Nothing returned
@@ -90,7 +90,7 @@
 		};
 
 		/**
-		 * @description: this function updates browser local storage when a task is set as done
+		 * @description: Updates browser local storage when a task is set as done
 		 * @param {Object=} task - Task to set as done
 		 * @returns {undefined} Nothing returned
 		 */
@@ -101,7 +101,7 @@
     };
 
 		/**
-		 * @description: this function fills the array of tasks that user wants to delete
+		 * @description: Fills the array of tasks that user wants to delete
 		 * @param {Object=} task - Task to push or splice from array
 		 * @returns {undefined} Nothing returned
 		 */
@@ -117,7 +117,7 @@
     };
 
 		/**
-		 * @description: this function toggles task priority between 0 and 1 and updates browser local storage
+		 * @description: Toggles task priority between 0 and 1 and updates browser local storage
 		 * @param {Object=} task - Task whose toggling priority
 		 * @returns {undefined} Nothing returned
 		 */
@@ -128,7 +128,7 @@
     };
 
 		/**
-		 * @description: this function identifies task selected in browser view
+		 * @description: Identifies task selected in browser view
 		 * @param {Object=} task - Task selected
 		 * @returns {undefined} Nothing returned
 		 */
