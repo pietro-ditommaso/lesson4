@@ -27,8 +27,8 @@
 		vm.doneTasks = {done: true};
 		vm.orders = [ 'title', 'date', 'work', 'priority' ];
 		vm.selectedTask = null;
-		vm.tasks = taskStorage.get() || [];
 		vm.setTasksOrder = setTasksOrder;
+		vm.tasks = taskStorage.get() || [];
 		vm.tasksToDelete = [];
     	vm.toDoTasks = {done: false};
 		vm.toggleView = toggleView;
