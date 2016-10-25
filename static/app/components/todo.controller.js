@@ -10,9 +10,9 @@
 
   angular.module('toDoApp')
     .controller('TodoController', TodoController);
-	
+
   TodoController.$inject = ['$mdDialog', 'taskStorage', 'userConfig'];
-	
+
 	/**
 	 * @description: TodoController function
 	 * @param {Object=} $mdDialog - Angular Material service to handle dialogs.
@@ -23,22 +23,21 @@
 		var vm = this;
 		vm.addTaskDialog = addTaskDialog;
 		vm.allTasks = '';
-    vm.deleteTaskDialog = deleteTaskDialog;
+    	vm.deleteTaskDialog = deleteTaskDialog;
 		vm.doneTasks = {done: true};
 		vm.orders = [ 'title', 'date', 'work', 'priority' ];
 		vm.selectedTask = null;
 		vm.tasks = taskStorage.get() || [];
-		vm.tasksOrder = {
-			type: 'title',
-			reverse: false
-		}
+		vm.tasksOrder = tasksOrder;
 		vm.tasksToDelete = [];
-    vm.toDoTasks = {done: false};
+    	vm.toDoTasks = {done: false};
 		vm.toggleView = toggleView;
 		vm.userConfig = userConfig.get() || {
+			tasksOrderType: 'title',
+			tasksOrderReverse: false,
 			view: 'list'
 		};
-		
+
 		////////////
 
 		/**
@@ -125,7 +124,7 @@
 														.ok('Yes')
 														.cancel('No')
 														.targetEvent(ev)
-				
+
 				$mdDialog.show(deleteDialog).then(function() {
 					deleteTasks(tasks);
 				});
@@ -139,6 +138,14 @@
 		function toggleView() {
 			vm.userConfig.view === 'list' ? vm.userConfig.view = 'card' : vm.userConfig.view = 'list';
 
+			userConfig.set(vm.userConfig);
+		};
+
+		/**
+		 * @description: Function to set tasks order type and save setting in user's configuration
+		 * @returns: {undefined} Nothing returned
+		 */
+		function tasksOrder() {
 			userConfig.set(vm.userConfig);
 		};
 	};
