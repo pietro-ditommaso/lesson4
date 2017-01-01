@@ -59,8 +59,8 @@
                 </md-option>
               </md-select>
             </md-input-container>
-            
-            <div flex="30">
+
+            <div flex="25">
               <md-button class="md-icon-button" ng-click="ctrl.setTasksOrder(false)">
                 <md-icon aria-label="increasing order" ng-class="{'selected-order': !ctrl.userConfig.tasksOrder.reverse}">arrow_drop_down</md-icon>
               </md-button>
@@ -69,8 +69,17 @@
                 <md-icon aria-label="decreasing order" ng-class="{'selected-order': ctrl.userConfig.tasksOrder.reverse}">arrow_drop_up</md-icon>
               </md-button>
             </div>
+            
+            <div flex="25">
+              <ul>
+                <li>
+                  <md-checkbox ng-click="ctrl.toggleSelectedTag(ctrl.tags[0])" aria-label="filter by tags">{{ctrl.tags[0]}}</md-checkbox>
+                  <md-checkbox ng-click="ctrl.toggleSelectedTag(ctrl.tags[1])" aria-label="filter by tags">{{ctrl.tags[1]}}</md-checkbox>
+                </li>
+              </ul>
+            </div>
 
-            <md-input-container flex="30" flex-xs="100" style="top:13px">
+            <md-input-container flex="25" flex-xs="100" style="top:13px">
               <input type="search" ng-model="ctrl.searchTask" placeholder="Search task">
               <md-icon aria-label="search">search</md-icon>
             </md-input-container>
@@ -80,21 +89,21 @@
             <md-tab label="todo">
               <md-content class="md-padding scroll tab-content">
                 <todo-tasklist tasks="ctrl.tasks" tasks-order="ctrl.userConfig.tasksOrder" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
-                          selected-task="ctrl.selectedTask" filter-func="ctrl.toDoTasks" view="ctrl.userConfig.view"></todo-tasklist>
+                          selected-tags="ctrl.selectedTags" selected-task="ctrl.selectedTask" filter-func="ctrl.toDoTasks" view="ctrl.userConfig.view"></todo-tasklist>
               </md-content>
             </md-tab>
 
             <md-tab label="done">
               <md-content class="md-padding scroll tab-content">
                 <todo-tasklist tasks="ctrl.tasks" tasks-order="ctrl.userConfig.tasksOrder" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
-                          selected-task="ctrl.selectedTask" filter-func="ctrl.doneTasks" view="ctrl.userConfig.view"></todo-tasklist>
+                          selected-tags="ctrl.selectedTags" selected-task="ctrl.selectedTask" filter-func="ctrl.doneTasks" view="ctrl.userConfig.view"></todo-tasklist>
               </md-content>
             </md-tab>
 
             <md-tab label="all">
               <md-content class="md-padding scroll tab-content">
                 <todo-tasklist tasks="ctrl.tasks" tasks-order="ctrl.userConfig.tasksOrder" tasks-to-delete="ctrl.tasksToDelete" search-task="ctrl.searchTask"
-                          selected-task="ctrl.selectedTask" filter-func="ctrl.allTasks" view="ctrl.userConfig.view"></todo-tasklist>
+                          selected-tags="ctrl.selectedTags" selected-task="ctrl.selectedTask" filter-func="ctrl.allTasks" view="ctrl.userConfig.view"></todo-tasklist>
               </md-content>
             </md-tab>
           </md-tabs>

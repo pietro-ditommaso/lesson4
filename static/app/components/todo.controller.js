@@ -27,11 +27,14 @@
     vm.deleteTaskDialog = deleteTaskDialog;
 		vm.doneTasks = {done: true};
 		vm.orders = [ 'title', 'date', 'work', 'priority' ];
+		vm.selectedTags = [];
 		vm.selectedTask = null;
 		vm.setTasksOrder = setTasksOrder;
+		vm.tags = ['work', 'house', 'family', 'holiday', 'friends', 'hard', 'easy', 'money', 'university', 'school', 'company'];
 		vm.tasks = taskStorage.get() || [];
 		vm.tasksToDelete = [];
     vm.toDoTasks = {done: false};
+    vm.toggleSelectedTag = toggleSelectedTag;
 		vm.toggleView = toggleView;
 		vm.userConfig = userConfig.get() || {
 			tasksOrder: {
@@ -56,7 +59,8 @@
 				priority: task.priority || 0,
 				done: task.done || false,
 				work: task.work || 24,
-				tags: task.tags || []
+				tags: task.tags || [],
+				showInfo: false
 			});
 
 			taskStorage.set(vm.tasks);
@@ -143,6 +147,22 @@
 			};
 
 			userConfig.set(vm.userConfig);
+		};
+
+		/**
+		 * @description: Function to insert/remove a tag to selected ones
+		 * @param: {String=} tag - Tag to be inserted/removed
+		 * @returns: {undefined} Nothing returned
+		 */
+		function toggleSelectedTag(tag) {
+			var index = vm.selectedTags.indexOf(tag);
+
+			if(index > -1) {
+				vm.selectedTags.splice(index, 1);
+			}
+			else vm.selectedTags.push(tag);
+
+			console.log(vm.selectedTags);
 		};
 
 		/**

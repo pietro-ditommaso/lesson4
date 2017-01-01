@@ -1,6 +1,6 @@
 <md-list ng-show="tasklistctrl.view === 'list'">
   <md-list-item class="md-3-line"
-                ng-repeat="task in tasklistctrl.tasks | orderBy:tasklistctrl.tasksOrder.type:tasklistctrl.tasksOrder.reverse | filter:tasklistctrl.filterFunc | filter: tasklistctrl.searchTask" 
+                ng-repeat="task in tasklistctrl.tasks | orderBy:tasklistctrl.tasksOrder.type:tasklistctrl.tasksOrder.reverse | filter:tasklistctrl.filterFunc | filter: tasklistctrl.searchTask | filter: tasklistctrl.filterByTag" 
                 ng-click="task.showInfo = !task.showInfo; tasklistctrl.toggleSelection(task)" ng-class="{'selected-task': (tasklistctrl.selectedTask == task)}">
     <div class="md-list-item-text" layout="column">
       <div layout="row" layout-align="space-between start">
@@ -38,7 +38,7 @@
 
 <div ng-show="tasklistctrl.view === 'card'" layout-xs="column" layout="row" layout-align="start" layout-wrap>
   <div flex-xs="100" flex="33"
-       ng-repeat="task in tasklistctrl.tasks | orderBy:tasklistctrl.tasksOrder.type:tasklistctrl.tasksOrder.reverse | filter:tasklistctrl.filterFunc | filter:tasklistctrl.searchTask">
+       ng-repeat="task in tasklistctrl.tasks | orderBy:tasklistctrl.tasksOrder.type:tasklistctrl.tasksOrder.reverse | filter:tasklistctrl.filterFunc | filter:tasklistctrl.searchTask | filter: tasklistctrl.filterByTag">
     <md-card ng-click="tasklistctrl.toggleSelection(task)" ng-class="{'selected-task': (tasklistctrl.selectedTask == task)}">
       <md-card-title>
         <md-card-title-text layout="row" layout-align="space-between start">

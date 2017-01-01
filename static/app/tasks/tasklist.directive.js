@@ -22,6 +22,7 @@
 				tasksOrder: '=',
 				tasksToDelete: '=',
 				searchTask: '=',
+				selectedTags: '=',
 				selectedTask: '=',
 				filterFunc: '=',
 				view: '='

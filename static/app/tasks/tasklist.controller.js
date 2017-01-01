@@ -21,6 +21,7 @@
 	function TasklistController($mdDialog, taskStorage) {
 		var vm = this;
 		vm.editTaskDialog = editTaskDialog;
+		vm.filterByTag = filterByTag;
 		vm.showTaskDialog = showTaskDialog;
 		vm.toggleDone = toggleDone;
 		vm.toggleMultiDelete = toggleMultiDelete;
@@ -70,6 +71,18 @@
 				editTask(newTask, task);
 			});
 		};
+
+		function filterByTag(task) {
+			if(vm.selectedTags.length > 0) {
+				for(var i = 0; i < vm.selectedTags.length; i++) {
+					if(task.tags.indexOf(vm.selectedTags[i]) === -1) return false;
+				}
+
+				return true;
+			}
+			
+			return true;
+		}
 
 		/**
 		 * @description: Provides dialog to show task information
